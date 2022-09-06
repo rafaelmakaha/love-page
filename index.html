@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @font-face {
+      font-family: Romantic;
+      src: url('RomanticMomen.ttf');
+    }
+
+    * {
+      font-family: Romantic, sans-serif;
+    }
+
+    h1 {
+      font-size: 128px;
+    }
+
+    html,
+    body {
+      height: 90vh;
+      background: pink;
+    }
+
+    .bg_heart {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      top: -50%;
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      -m-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+    }
+
+    .heart:before {
+      position: absolute;
+      top: -50%;
+      left: 0;
+      display: block;
+      content: "";
+      width: 100%;
+      height: 100%;
+      background: inherit;
+      border-radius: 100%;
+    }
+
+    .heart:after {
+      position: absolute;
+      top: 0;
+      right: -50%;
+      display: block;
+      content: "";
+      width: 100%;
+      height: 100%;
+      background: inherit;
+      border-radius: 100%;
+    }
+
+    .content {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      z-index: 3;
+      position: relative;
+    }
+
+    .button-wrapper {
+      display: flex;
+      flex-direction: row;
+    }
+
+
+
+    .title {
+      align-self: center;
+    }
+
+    @-webkit-keyframes love {
+      0% {
+        top: 110%
+      }
+    }
+
+    @-moz-keyframes love {
+      0% {
+        top: 110%
+      }
+    }
+
+    @-ms-keyframes love {
+      0% {
+        top: 110%
+      }
+    }
+
+    @keyframes love {
+      0% {
+        top: 110%
+      }
+    }
+
+    .button-negative {
+      position: absolute;
+      display: none;
+    }
+
+    #move {
+
+    }
+
+    .button {
+      position: relative;
+      display: inline-block;
+      margin: 20px;
+      max-width: 200px;
+    }
+
+    .button a {
+      color: white;
+      font-family: Helvetica, sans-serif;
+      font-weight: bold;
+      font-size: 26px;
+      text-align: center;
+      text-decoration: none;
+      background-color: #FFA12B;
+      display: block;
+      position: relative;
+      padding: 20px 40px;
+
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      text-shadow: 0px 1px 0px #000;
+      filter: dropshadow(color=#000, offx=0px, offy=1px);
+
+      -webkit-box-shadow: inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
+      -moz-box-shadow: inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
+      box-shadow: inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
+
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+    }
+
+    .button a:active {
+      top: 10px;
+      background-color: #F78900;
+
+      -webkit-box-shadow: inset 0 1px 0 #FFE5C4, inset 0 -3px 0 #915100;
+      -moz-box-shadow: inset 0 1px 0 #FFE5C4, inset 0 -3pxpx 0 #915100;
+      box-shadow: inset 0 1px 0 #FFE5C4, inset 0 -3px 0 #915100;
+    }
+
+    .button:after {
+      content: "";
+      height: 100%;
+      width: 100%;
+      padding: 4px;
+      position: absolute;
+      bottom: -15px;
+      left: -4px;
+      z-index: -1;
+      background-color: #2B1800;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content">
+    <h1 class="title">Namora comigo?</h1>
+    <div class="button-wrapper">
+      <div class="button">
+        <a href="#">Sim</a>
+      </div>
+      <div class="button button-negative" id="move">
+        <a href="#">Nao</a>
+      </div>
+    </div>
+  </div>
+  <div class="bg_heart"></div>
+
+
+</body>
+
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+  function change() {
+    let coordY = Math.max(Math.floor(Math.random() * 500), 25)
+    let coordX = Math.max(Math.floor(Math.random() * 100), 25)
+    $("#move").css({top: coordY+'px', left: coordX+'px'})
+  }
+
+  $("#move").click(function(event) {
+    change()
+  })
+
+  $("#move").hover(function(event) {
+    change()
+  })
+</script>
+<script>
+  var love = setInterval(function () {
+    var r_num = Math.floor(Math.random() * 40) + 1;
+    var r_size = Math.floor(Math.random() * 65) + 10;
+    var r_left = Math.floor(Math.random() * 100) + 1;
+    var r_bg = Math.floor(Math.random() * 25) + 100;
+    var r_time = Math.floor(Math.random() * 5) + 5;
+
+    $('.bg_heart').append("<div class='heart' style='width:" + r_size + "px;height:" + r_size + "px;left:" + r_left + "%;background:rgba(255," + (r_bg - 25) + "," + r_bg + ",1);-webkit-animation:love " + r_time + "s ease;-moz-animation:love " + r_time + "s ease;-ms-animation:love " + r_time + "s ease;animation:love " + r_time + "s ease'></div>");
+
+    $('.bg_heart').append("<div class='heart' style='width:" + (r_size - 10) + "px;height:" + (r_size - 10) + "px;left:" + (r_left + r_num) + "%;background:rgba(255," + (r_bg - 25) + "," + (r_bg + 25) + ",1);-webkit-animation:love " + (r_time + 5) + "s ease;-moz-animation:love " + (r_time + 5) + "s ease;-ms-animation:love " + (r_time + 5) + "s ease;animation:love " + (r_time + 5) + "s ease'></div>");
+
+    $('.heart').each(function () {
+      var top = $(this).css("top").replace(/[^-\d\.]/g, '');
+      var width = $(this).css("width").replace(/[^-\d\.]/g, '');
+      if (top <= -100 || width >= 150) {
+        $(this).detach();
+      }
+    });
+  }, 500);
+</script>
